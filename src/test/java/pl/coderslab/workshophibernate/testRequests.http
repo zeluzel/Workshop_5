@@ -1,0 +1,48 @@
+#pobieranie wszystkich książek
+GET localhost:8080/books/
+###
+
+#pobieranie książki po id
+GET localhost:8080/books/2
+###
+
+#dodawanie książki
+POST localhost:8080/books/
+Content-Type: application/json
+
+{
+  "id": "3",
+  "isbn": "2",
+  "title": "Paulinka je mamałygę",
+  "publisher": "aasd",
+  "type": "kuchnia świata",
+  "author": "asdasdasd"
+}
+###
+
+#edycja książki
+PUT localhost:8080/books/
+Content-Type: application/json
+
+{
+  "id": "1",
+  "isbn": "10",
+  "title": "Edit Book",
+  "publisher": "aasd",
+  "type": "programming",
+  "author": "asdasdasd"
+}
+###
+
+#usuwanie książki
+DELETE localhost:8080/books/5
+###
+
+#test nagłówka Accept
+GET localhost:8080/books/
+Accept: text/plain
+#a wysyłamy JSONa...
+#HTTP Status 406 – Not Acceptable
+#    The target resource does not have a current representation that would be acceptable to the user
+#    agent, according to the proactive negotiation header fields received in the request, and the server is unwilling to
+#    supply a default representation.

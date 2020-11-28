@@ -12,6 +12,9 @@ import pl.coderslab.workshophibernate.service.BookService;
 import java.util.Map;
 
 
+// TODO: 28.11.2020
+//  przy pracy z DB nie można pozwolić na podawanie id samemu
+
 @RestController
 @RequestMapping("/books")
 public class BookController {
@@ -53,7 +56,7 @@ public class BookController {
         if (!bookService.addBook(bookToAdd)) {
             logger.error("Failed: ID already taken");
             throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE,
-                    "This id is already taken. Last applicable id is: " + bookService.getLastId() + 1);
+                    "This id is already taken. Last applicable id is: " + (bookService.getLastId() + 1));
         } else {
             logger.info("Success");
             return "Book successfully added";
@@ -69,7 +72,7 @@ public class BookController {
                     "There's no book with id: " + bookToEdit.getId());
         } else {
             logger.info("Success", bookToEdit);
-            return "Success";
+            return "Book successfully edited";
         }
     }
 
