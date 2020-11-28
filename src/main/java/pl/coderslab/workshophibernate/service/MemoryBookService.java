@@ -1,13 +1,14 @@
 package pl.coderslab.workshophibernate.service;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import pl.coderslab.workshophibernate.entity.Book;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 
-@Component
+@Service
 public class MemoryBookService implements BookService {
 
     Map<Long, Book> allBooksMap = new LinkedHashMap<>();
