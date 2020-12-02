@@ -5,27 +5,31 @@ import org.springframework.stereotype.Component;
 import pl.coderslab.workshophibernate.entity.Book;
 import pl.coderslab.workshophibernate.service.BookService;
 
-import java.util.Map;
+import java.util.*;
+
+import static javax.swing.UIManager.put;
 
 @Component
 public class BookFixture {
 
     private final BookService bookService;
 
-    private final Map<Long, Book> books = Map.of(
-            1L, new Book(
+    private final Map<Long, Book> books = new LinkedHashMap<>() {
+        {
+            put(1L, new Book(
                     1L, "9788324631766", "Pan Tadeusz",
                     "Adam Mickiewicz", "Helion", "dasdas"
-            ),
-            2L, new Book(
+            ));
+            put(2L, new Book(
                     2L, "1433252323", "Pan Wołodyjowski",
                     "Henryk Sienkiewicz", "asfdasd", "dadas"
-            ),
-            3L, new Book(
+            ));
+            put(3L, new Book(
                     3L, "12343132", "Inny Pan",
                     "Inny autor", "dfsdfsd", "dfsfsd"
-            )
-    );
+            ));
+        }
+    };
 
     @Autowired
     public BookFixture(BookService bookService) {
